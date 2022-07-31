@@ -1,5 +1,4 @@
-import { createMachine, assign, interpret } from "xstate";
-import { waitFor } from "xstate/lib/waitFor";
+import { createMachine, assign } from "xstate";
 import { renderSSR } from "nano-jsx";
 import { Home } from "@fusionstrings/fullfrontal";
 
