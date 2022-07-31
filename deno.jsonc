@@ -6,6 +6,6 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/esm"
+    "jsxImportSource": "nano-jsx/esm"
   }
 }
