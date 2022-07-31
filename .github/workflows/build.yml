@@ -7,8 +7,8 @@ on:
     branches: [ creation ]
 
 jobs:
-  deno.importmap:
-    name: generate deno.importmap using chomp
+  build:
+    name: build using chomp
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -19,13 +19,13 @@ jobs:
       - name: Upload built artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: deno.importmap
+          name: build
           path:
             deno.importmap
 
   deploy:
     name: deploy
-    needs: deno.importmap
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -36,7 +36,7 @@ jobs:
       - name: Download built artifacts
         uses: actions/download-artifact@v3
         with:
-          name: deno.importmap
+          name: build
       - name: list importmap content
         run: cat deno.importmap
       - name: Deploy to Deno Deploy
