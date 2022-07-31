@@ -1,0 +1,10 @@
+version = 0.1
+
+extensions = ['chomp@0.1:jspm']
+
+[[task]]
+deps = ['server.tsx', 'deps.ts']
+target = 'deno.importmap'
+template = 'jspm'
+[task.template-options]
+env = ['deno', 'production']

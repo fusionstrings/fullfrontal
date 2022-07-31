@@ -1,0 +1,14 @@
+{
+    "name": "@fusionstrings/fullfrontal",
+    "exports": {
+        ".": "./source/home.tsx",
+        "./register": "./source/register.ts",
+        "./state": "./source/state.ts",
+        "./machine": "./source/machine.tsx"
+    },
+    "devDependencies": {
+        "@jspm/generator": "^1.0.0-beta.33",
+        "mkdirp": "^1.0.4"
+    },
+    "type": "module"
+}
