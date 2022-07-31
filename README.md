@@ -15,6 +15,6 @@ A webapp template using state machine & native web APIs.
 ## Tech stack used to implement above APIs
 - [JSPM Generator](https://github.com/jspm/generator)
 - [Chomp](https://github.com/guybedford/chomp)
-- [Deno](https://deno.com)
-- [Xstate](https://xstate.js.org)
-- [nano-jsx](https://nanojsx.io/)
+- [Deno](https://github.com/denoland/deno)
+- [Xstate](https://github.com/statelyai/xstate)
+- [nano-jsx](https://github.com/nanojsx/nano)
