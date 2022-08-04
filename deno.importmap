@@ -1,13 +1,11 @@
 {
-  "scopes": {
-    "./": {
-      "@fusionstrings/fullfrontal": "./source/home.tsx",
-      "@fusionstrings/fullfrontal/machine": "./source/machine.tsx",
-      "@fusionstrings/fullfrontal/register": "./source/register.ts",
-      "nano-jsx": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/lib/index.js",
-      "nano-jsx/esm/jsx-runtime": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/esm/jsx-runtime/index.js",
-      "xstate": "https://ga.jspm.io/npm:xstate@4.32.1/lib/index.js",
-      "xstate/lib/waitFor": "https://ga.jspm.io/npm:xstate@4.32.1/lib/waitFor.js"
-    }
+  "imports": {
+    "@fusionstrings/fullfrontal": "./source/home.tsx",
+    "@fusionstrings/fullfrontal/machine": "./source/machine.tsx",
+    "@fusionstrings/fullfrontal/register": "./source/register.ts",
+    "nano-jsx": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/lib/index.js",
+    "nano-jsx/esm/jsx-runtime": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/esm/jsx-runtime/index.js",
+    "xstate": "https://ga.jspm.io/npm:xstate@4.32.1/lib/index.js",
+    "xstate/lib/waitFor": "https://ga.jspm.io/npm:xstate@4.32.1/lib/waitFor.js"
   }
 }
