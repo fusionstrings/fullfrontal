@@ -1,5 +1,5 @@
 import { createMachine, assign } from "xstate";
-import { renderSSR } from "nano-jsx";
+import { renderSSR, h } from "nano-jsx";
 import { Home } from "@fusionstrings/fullfrontal";
 
 function renderHome() {
