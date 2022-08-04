@@ -4,8 +4,4 @@
     "dev": "deno run --allow-net --allow-env --allow-read ./server.tsx",
     "start": "deno run --import-map deno.importmap --allow-net --allow-env --allow-read ./server.tsx"
   },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "nano-jsx/esm"
-  }
 }
