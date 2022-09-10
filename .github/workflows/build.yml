@@ -1,5 +1,4 @@
 name: CI/CD
-
 on:
   push:
     branches: [ creation ]
@@ -7,8 +6,25 @@ on:
     branches: [ creation ]
 
 jobs:
+  build:
+    name: build using chomp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Setup Chomp
+        uses: guybedford/chomp-action@v1
+      - run: chomp deno.importmap
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path:
+            deno.importmap
+
   deploy:
     name: deploy
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -16,6 +32,10 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+      - name: Download built artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
       - name: list importmap content
         run: cat deno.importmap
       - name: Deploy to Deno Deploy
