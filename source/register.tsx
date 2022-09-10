@@ -41,7 +41,7 @@ function requestHandler(request: Request) {
       return requestHandler(request);
     }
 
-    return new Response(render(<NotFound />), {
+    return new Response(render(<NotFound path={pathname} />), {
       status: 404,
       headers: { "content-type": typeByExtension("html") },
     });

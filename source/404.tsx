@@ -1,5 +1,5 @@
-function NotFound() {
-  return <h1>Not Found</h1>;
+function NotFound({path}) {
+  return <h1>Not Found {path}</h1>;
 }
 
 export { NotFound };
