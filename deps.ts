@@ -1,1 +1,2 @@
-import 'nano-jsx/esm/jsx-runtime';
+import 'preact';
+import 'preact/jsx-runtime'

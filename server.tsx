@@ -1,5 +1,5 @@
-import { serve } from "https://deno.land/std@0.150.0/http/server.ts";
-import { requestHandler } from "@fusionstrings/fullfrontal/register";
+import { serve } from "https://deno.land/std@0.155.0/http/server.ts";
+import { requestHandler } from "#register";
 
 if (import.meta?.main) {
   const timestamp = Date.now();

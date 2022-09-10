@@ -6,6 +6,6 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "nano-jsx/esm"
+    "jsxImportSource": "preact"
   }
 }

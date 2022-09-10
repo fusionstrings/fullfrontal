@@ -8,3 +8,36 @@ target = 'deno.importmap'
 template = 'jspm'
 [task.template-options]
 env = ['deno', 'production']
+
+
+# [[task]]
+# targets = ['deno.importmap']
+# deps = [
+#     'server.tsx',
+#     'deps.ts',
+#     'npm:install',
+# ]
+# invalidation = 'always'
+# engine = 'node'
+# run = '''
+#     import { Generator } from '@jspm/generator';
+#     import { readFile, writeFile } from 'fs/promises';
+#     import { pathToFileURL } from 'url';
+#     import mkdirp from 'mkdirp';
+#     import { dirname } from 'path';
+
+#     const generator = new Generator({
+#       mapUrl: import.meta.url,
+#       env: ["deno", "production"],
+#       inputMap: {
+#         imports: {
+#           "nano-jsx": "https://deno.land/x/nano_jsx@v0.0.33/mod.ts"
+#         }
+#       }
+#     });
+
+#     await Promise.all(process.env.DEPS.split(':').map(dep => generator.traceInstall('./' + dep)));
+
+#     mkdirp.sync(dirname(process.env.TARGET));
+#     await writeFile(process.env.TARGET, JSON.stringify(generator.getMap(), null, 2));
+# '''

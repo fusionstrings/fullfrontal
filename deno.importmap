@@ -1,13 +1,19 @@
 {
   "scopes": {
     "./": {
-      "@fusionstrings/fullfrontal": "./source/home.tsx",
-      "@fusionstrings/fullfrontal/machine": "./source/machine.tsx",
-      "@fusionstrings/fullfrontal/register": "./source/register.ts",
-      "nano-jsx": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/lib/index.js",
-      "nano-jsx/esm/jsx-runtime": "https://ga.jspm.io/npm:nano-jsx@0.0.35-dev.0/esm/jsx-runtime/index.js",
-      "xstate": "https://ga.jspm.io/npm:xstate@4.32.1/lib/index.js",
-      "xstate/lib/waitFor": "https://ga.jspm.io/npm:xstate@4.32.1/lib/waitFor.js"
+      "#404": "./source/404.tsx",
+      "#500": "./source/500.tsx",
+      "#home": "./source/home.tsx",
+      "#machine": "./source/machine.tsx",
+      "#register": "./source/register.tsx",
+      "preact": "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs",
+      "preact-render-to-string": "https://ga.jspm.io/npm:preact-render-to-string@5.2.4/dist/index.mjs",
+      "preact/jsx-runtime": "https://ga.jspm.io/npm:preact@10.10.6/jsx-runtime/dist/jsxRuntime.mjs",
+      "xstate": "https://ga.jspm.io/npm:xstate@4.33.6/lib/index.js",
+      "xstate/lib/waitFor": "https://ga.jspm.io/npm:xstate@4.33.6/lib/waitFor.js"
+    },
+    "https://ga.jspm.io/": {
+      "preact": "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs"
     }
   }
 }
