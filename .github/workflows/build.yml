@@ -7,7 +7,6 @@ on:
     branches: [ creation ]
 
 jobs:
-
   deploy:
     name: deploy
     runs-on: ubuntu-latest
