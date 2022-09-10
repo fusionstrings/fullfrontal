@@ -1,10 +1,12 @@
 {
     "name": "@fusionstrings/fullfrontal",
-    "exports": {
-        ".": "./source/home.tsx",
-        "./register": "./source/register.ts",
-        "./state": "./source/state.ts",
-        "./machine": "./source/machine.tsx"
+    "imports": {
+        "#home": "./source/home.tsx",
+        "#register": "./source/register.tsx",
+        "#state": "./source/state.ts",
+        "#machine": "./source/machine.tsx",
+        "#404": "./source/404.tsx",
+        "#500": "./source/500.tsx"
     },
     "devDependencies": {
         "@jspm/generator": "^1.0.0-beta.33",
