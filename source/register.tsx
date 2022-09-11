@@ -1,7 +1,7 @@
 import render from "preact-render-to-string";
 import { interpret } from "xstate";
 import { waitFor } from "xstate/lib/waitFor";
-import { typeByExtension } from "https://deno.land/std@0.150.0/media_types/mod.ts";
+import { typeByExtension } from "https://deno.land/std@0.155.0/media_types/mod.ts";
 import { responseMachine } from "#machine";
 import { Home } from "#home";
 import { NotFound } from "#404";
