@@ -21,13 +21,13 @@ async function requestHandlerHome(request: Request) {
   });
 }
 
-type RequestHandler = {
+type RequestHandlerRegister = {
   [pathname: URL["pathname"]]: (
     request: Request
   ) => Response | Promise<Response>;
 };
 
-const requestHandlers: RequestHandler = {
+const requestHandlerRegister: RequestHandlerRegister = {
   "/": requestHandlerHome,
 };
 
@@ -35,10 +35,8 @@ function requestHandler(request: Request) {
   try {
     const { pathname } = new URL(request.url);
 
-    const requestHandler = requestHandlers[pathname];
-
-    if (requestHandler) {
-      return requestHandler(request);
+    if (pathname in requestHandlerRegister) {
+      return requestHandlerRegister[pathname](request);
     }
 
     return new Response(render(<NotFound path={pathname} />), {
