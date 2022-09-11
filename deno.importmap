@@ -1,19 +1,18 @@
 {
+  "imports": {
+    "#register": "./source/register.tsx",
+    "preact": "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs",
+    "preact/jsx-runtime": "https://ga.jspm.io/npm:preact@10.10.6/jsx-runtime/dist/jsxRuntime.mjs"
+  },
   "scopes": {
     "./": {
       "#404": "./source/404.tsx",
       "#500": "./source/500.tsx",
       "#home": "./source/home.tsx",
       "#machine": "./source/machine.tsx",
-      "#register": "./source/register.tsx",
-      "preact": "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs",
       "preact-render-to-string": "https://ga.jspm.io/npm:preact-render-to-string@5.2.4/dist/index.mjs",
-      "preact/jsx-runtime": "https://ga.jspm.io/npm:preact@10.10.6/jsx-runtime/dist/jsxRuntime.mjs",
       "xstate": "https://ga.jspm.io/npm:xstate@4.33.6/lib/index.js",
       "xstate/lib/waitFor": "https://ga.jspm.io/npm:xstate@4.33.6/lib/waitFor.js"
-    },
-    "https://ga.jspm.io/": {
-      "preact": "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs"
     }
   }
 }
