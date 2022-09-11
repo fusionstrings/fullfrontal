@@ -17,4 +17,4 @@ A webapp template using state machine & native web APIs.
 - [Chomp](https://github.com/guybedford/chomp)
 - [Deno](https://github.com/denoland/deno)
 - [Xstate](https://github.com/statelyai/xstate)
-- [nano-jsx](https://github.com/nanojsx/nano)
+- [preact](https://github.com/preactjs/preact)
