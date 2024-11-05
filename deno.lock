@@ -1,0 +1,7 @@
+{
+  "version": "4",
+  "remote": {
+    "https://ga.jspm.io/npm:preact@10.10.6/dist/preact.mjs": "77a6a942cbe9eb69f8aeca4737b28777806c63b1012183805d1c51ed76b18700",
+    "https://ga.jspm.io/npm:preact@10.10.6/jsx-runtime/dist/jsxRuntime.mjs": "0ac90981856ef3a7dec722674257d45cd0cf526c180a27108ab22d9f6b84605e"
+  }
+}
