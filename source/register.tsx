@@ -1,29 +1,44 @@
-import render from "preact-render-to-string";
-import { interpret } from "xstate";
-import { waitFor } from "xstate/lib/waitFor";
-import { typeByExtension } from "https://deno.land/std@0.155.0/media_types/mod.ts";
-import { responseMachine } from "#machine";
+import { renderToReadableStream } from "npm:react-dom/server";
+import { createActor, fromPromise, toPromise } from "npm:xstate";
+import { typeByExtension } from "jsr:@std/media-types";
 import { Home } from "#home";
 import { NotFound } from "#404";
 import { ServerError } from "#500";
 
+const headers = { "content-type": typeByExtension(".HTML") || "text/html" };
+
+const pageMachine = fromPromise(
+  async ({ input }: { input: { pathname: URL["pathname"] } }) => {
+    return await { message: `Hello ${input.pathname}` };
+  },
+);
+
 async function requestHandlerHome(request: Request) {
   const { pathname } = new URL(request.url);
-  const service = interpret(responseMachine);
 
-  service.start();
-  service.send(pathname);
+  const actor = createActor(pageMachine, { input: { pathname } });
 
-  const state = await waitFor(service, (state) => state.matches("success"));
-
-  return new Response(render(<Home greeting={state.context.response} />), {
-    headers: { "content-type": typeByExtension("html") },
+  actor.subscribe({
+    error: (error) => {
+      console.error("error:::", error);
+    },
   });
+
+  actor.start();
+
+  const output = await toPromise(actor);
+
+  return new Response(
+    await renderToReadableStream(<Home greeting={output.message} />),
+    {
+      headers,
+    },
+  );
 }
 
 type RequestHandlerRegister = {
   [pathname: URL["pathname"]]: (
-    request: Request
+    request: Request,
   ) => Response | Promise<Response>;
 };
 
@@ -39,16 +54,23 @@ function requestHandler(request: Request) {
       return requestHandlerRegister[pathname](request);
     }
 
-    return new Response(render(<NotFound path={pathname} />), {
+    return new Response(renderToReadableStream(<NotFound path={pathname} />), {
       status: 404,
-      headers: { "content-type": typeByExtension("html") },
+      headers,
     });
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return new Response(
-      render(<ServerError message={error.message || error.toString()} />),
-      { status: 500, headers: { "content-type": typeByExtension("html") } }
+      renderToReadableStream(
+        <ServerError message={errorMessage} />,
+      ),
+      { status: 500, headers },
     );
   }
 }
 
 export { requestHandler };
+
+export default {
+  fetch: requestHandler,
+};
