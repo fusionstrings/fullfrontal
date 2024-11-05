@@ -3,7 +3,5 @@
     "deno.codeLens.references": true,
     "deno.codeLens.referencesAllFunctions": true,
     "deno.codeLens.test": true,
-    "deno.enable": true,
-    "deno.importMap": "deno.importmap",
-    "deno.unstable": true
+    "deno.enable": true
 }

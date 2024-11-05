@@ -1,49 +1,96 @@
-import { createMachine, assign } from "xstate";
+import { fromPromise, setup } from "npm:xstate";
 
-const responseMachine =
-  /** @xstate-layout N4IgpgJg5mDOIC5QCcwGMwAcAuBLA9gHYB0qAjgK5zYDEA9IqJvrLnkYyAB6IC0AzAE4AHMX4BGYYPEAmYQAYALHIDsixQBoQATz6SZxGeICs4+cfmWj8gGwBfO1tQYcBEnRoQiYYrkIA3fABrHwALfABbME5mVnZCTh4EXmNBQ1sLeUF+UyUbGy1dBBlFByd0LHjiDzBkZHxkYkwAGwBDbAAzBojicKiYljY3RL5jFWJBGWMZHJkVWRNCvn4ZAxU5xRtxcRybY3sykEJ8CDhOZ0q3UjBKagG44aRuUZl5CflhMfEbIRNxJeSkn4xHkKkEm2EZhKNmEhwuriI1XuQw4TySvFUxG2ghUQk2SkExn4AN44kEaVB-BstimOKE-DhFQRJFgFDQGFg8CesRRCTRiBkMLEkJsuLm8kF8n+OgFwPmKiUwkU+0EthURMZLiqHVauGaFFQyPiI2KxlEiiklmUqxhq00MuS-CyxHWan262V1IO5S1jyYg2N-OSxnU70+8x+0lMJLxLo2qRKpmEe1KDjsQA */
-  createMachine({
-    context: { response: undefined, error: undefined },
-    id: "reception",
-    initial: "request",
-    states: {
-      request: {
-        on: {
-          "/": {
-            target: "/",
-          },
-        },
-      },
-      "/": {
-        invoke: {
-          // deno-lint-ignore require-await
-          src: async (context, event) => {
-            return 'Hello';
-          },
-          id: "home",
-          onDone: [
-            {
-              actions: assign({
-                response: (context, event) => event.data,
-              }),
-              target: "success",
-            },
-          ],
-          onError: [
-            {
-              actions: assign({ error: (context, event) => event.data }),
-              target: "failure",
-            },
-          ],
-        },
-      },
-      success: {
-        type: "final",
-      },
-      failure: {
-        type: "final",
+export const machine = setup({
+  types: {
+    context: {} as {
+      HOME: {
+        body: string; // Changed from never to string
+        status: number; // Changed from never to number
+        headers: Record<string, string>; // Changed from never to Record<string, string>
+      };
+      NOT_FOUND: {
+        body: string; // Changed from Record<string, never> to string
+        status: number; // Changed from never to number
+        headers: Record<string, string>;
+      };
+    },
+    events: {} as { type: "/" } | { type: "/404" },
+  },
+  actors: {
+    "HOME.requestHandler": fromPromise(async () => {
+      return await "hello";
+    }),
+    "NOT_FOUND.requestHandler": fromPromise(async () => {
+      return await "NOT FOUND";
+    }),
+  },
+}).createMachine({
+  context: {
+    HOME: {
+      body: "",
+      status: 200,
+      headers: {
+        "content-type": "text/html",
       },
     },
-  });
-
-export { responseMachine };
+    NOT_FOUND: {
+      body: "",
+      status: 404,
+      headers: {
+        "content-type": "text/html",
+      },
+    },
+  },
+  id: "request-handler-2024-11-06",
+  initial: "IDLE",
+  states: {
+    IDLE: {
+      on: {
+        "/": {
+          target: "HOME",
+        },
+        "/404": {
+          target: "NOT_FOUND",
+        },
+      },
+    },
+    HOME: {
+      invoke: {
+        id: "request-handler.HOME:invocation[0]",
+        input: {},
+        onDone: {
+          target: "HOME_SUCCESS",
+        },
+        onError: {
+          target: "HOME_FAILED",
+        },
+        src: "HOME.requestHandler",
+      },
+    },
+    NOT_FOUND: {
+      invoke: {
+        id: "request-handler.NOT_FOUND:invocation[0]",
+        input: {},
+        onDone: {
+          target: "NOT_FOUND_SUCCESS",
+        },
+        onError: {
+          target: "NOT_FOUND_FAILED",
+        },
+        src: "NOT_FOUND.requestHandler",
+      },
+    },
+    HOME_FAILED: {
+      type: "final",
+    },
+    HOME_SUCCESS: {
+      type: "final",
+    },
+    NOT_FOUND_SUCCESS: {
+      type: "final",
+    },
+    NOT_FOUND_FAILED: {
+      type: "final",
+    },
+  },
+});
