@@ -1,11 +1,18 @@
 {
-  "importMap": "deno.importmap",
+  "imports": {
+    "#404": "./source/404.tsx",
+    "#500": "./source/500.tsx",
+    "#home": "./source/home.tsx",
+    "#machine": "./source/machine.tsx",
+    "react": "npm:react@^18.3.1"
+  },
   "tasks": {
-    "dev": "deno run --allow-net --allow-env --allow-read ./server.tsx",
-    "start": "deno run --import-map deno.importmap --allow-net --allow-env --allow-read ./server.tsx"
+    "dev": "deno serve --allow-net --allow-env --allow-read --watch ./source/register.tsx",
+    "start": "deno serve --allow-net --allow-env --allow-read ./source/register.tsx"
   },
   "compilerOptions": {
+    "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "react"
   }
 }
