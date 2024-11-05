@@ -13,8 +13,6 @@ A webapp template using state machine & native web APIs.
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## Tech stack used to implement above APIs
-- [JSPM Generator](https://github.com/jspm/generator)
-- [Chomp](https://github.com/guybedford/chomp)
 - [Deno](https://github.com/denoland/deno)
 - [Xstate](https://github.com/statelyai/xstate)
-- [preact](https://github.com/preactjs/preact)
+- [react](https://github.com/facebook/react)
