@@ -1,0 +1,25 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "fullfrontal",
+    "short_name": "fullfrontal",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "scope": "/",
+    "id": "fullfrontal",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "theme_color": "#f4c9f3",
+    "background_color": "#f4c9f3"
+}
